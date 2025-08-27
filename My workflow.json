@@ -1,0 +1,86 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -192,
+        16
+      ],
+      "id": "106b9424-9a53-4b93-9c6e-b99a60bc7eb1",
+      "name": "When chat message received",
+      "webhookId": "2553d5c3-2f29-4780-92a4-a7be5d102951"
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        16,
+        16
+      ],
+      "id": "2a2dc313-ea91-49d3-9047-8854d7d60738",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        224
+      ],
+      "id": "5436e8ec-0cc3-4344-8302-5893639599a9",
+      "name": "OpenAI Chat Model"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "332256fe-c519-431d-a4eb-38e1b8454442",
+  "meta": {
+    "instanceId": "826c4f791c5b377c7cb559dcb0761b1d6603b4cd1373008f6a3eac1c0b8d1b36"
+  },
+  "id": "ZQW4XoZ4HC0RMf49",
+  "tags": []
+}
